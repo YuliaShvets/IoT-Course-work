@@ -1,6 +1,10 @@
 package ua.lviv.iot.ParkingServer.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import ua.lviv.iot.ParkingServer.model.enums.VehicleType;
 
 @AllArgsConstructor

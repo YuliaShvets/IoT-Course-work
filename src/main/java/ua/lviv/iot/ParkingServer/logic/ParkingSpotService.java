@@ -23,10 +23,8 @@ public class ParkingSpotService {
     private Long index = 0L;
 
     @Autowired
-    ParkingSpotFileStore parkingSpotFileStore;
+    private ParkingSpotFileStore parkingSpotFileStore;
 
-    @Autowired
-    ParkingService parkingService;
 
 
     public List<ParkingSpot> findAllParkingSpots() {

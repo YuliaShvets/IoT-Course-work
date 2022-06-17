@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.lviv.iot.ParkingServer.datastorage.VehicleFileStore;
-import ua.lviv.iot.ParkingServer.model.ParkingSpot;
 import ua.lviv.iot.ParkingServer.model.Vehicle;
 
 import javax.annotation.PostConstruct;
@@ -21,13 +20,11 @@ import java.util.Map;
 @Service
 public class VehicleService {
     private Map<Long, Vehicle> vehicles = new HashMap<>();
-    Long index = 0L;
+    private Long index = 0L;
 
     @Autowired
-    VehicleFileStore vehicleFileStore;
+    private VehicleFileStore vehicleFileStore;
 
-    @Autowired
-    ParkingSpotService parkingSpotService;
 
     public List<Vehicle> findAllVehicles() {
         return new ArrayList<>(vehicles.values());
@@ -54,12 +51,6 @@ public class VehicleService {
         return vehicles.remove(vehicleId);
     }
 
-    public void parkVehicle(Vehicle vehicle, Long parkingSpotId) {
-        ParkingSpot parkingSpot = new ParkingSpot();
-        if (vehicle.isTicketReceived() && parkingSpot.isAvailable()) {
-            parkingSpotService.deleteParkingSpot(parkingSpotId);
-        }
-    }
 
     @PreDestroy
     private void saveVehicleData() throws IOException {

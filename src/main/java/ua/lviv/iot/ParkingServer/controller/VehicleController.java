@@ -1,7 +1,14 @@
 package ua.lviv.iot.ParkingServer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ua.lviv.iot.ParkingServer.logic.VehicleService;
 import ua.lviv.iot.ParkingServer.model.Vehicle;
 
@@ -33,11 +40,6 @@ public class VehicleController {
     @PutMapping("/updateVehicle/{vehicleId}")
     public Vehicle updateVehicle(@PathVariable Long vehicleId, @RequestBody Vehicle vehicle) {
         return vehicleService.updateVehicle(vehicleId, vehicle);
-    }
-
-    @DeleteMapping("/parkVehicle/{parkingSpotId}")
-    public void parkVehicle(@RequestBody Vehicle vehicle, @PathVariable Long parkingSpotId) {
-        vehicleService.parkVehicle(vehicle, parkingSpotId);
     }
 
 

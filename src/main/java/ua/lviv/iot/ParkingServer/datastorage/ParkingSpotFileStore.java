@@ -6,8 +6,10 @@ import ua.lviv.iot.ParkingServer.model.ParkingSpot;
 import ua.lviv.iot.ParkingServer.model.enums.ParkingSpotSize;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -85,7 +87,7 @@ public class ParkingSpotFileStore {
         String date = Date.getTimeNow();
 
         File file = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + date + ".csv");
-        try (FileWriter writer = new FileWriter(file)) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");) {
             writer.write(parkingSpots.get(0).getHeaders() + "\n");
             for (ParkingSpot parkingSpot : parkingSpots) {
                 writer.write(parkingSpot.toCSV() + "\n");

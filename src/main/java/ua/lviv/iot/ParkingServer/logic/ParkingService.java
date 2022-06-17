@@ -21,10 +21,10 @@ import java.util.Map;
 @Service
 public class ParkingService {
     private Map<Long, Parking> parking = new HashMap();
-    Long index = 0L;
+    private Long index = 0L;
 
     @Autowired
-    ParkingFileStore parkingFileStore;
+    private ParkingFileStore parkingFileStore;
 
     public List<Parking> findAllParking() {
         return new ArrayList<>(parking.values());
