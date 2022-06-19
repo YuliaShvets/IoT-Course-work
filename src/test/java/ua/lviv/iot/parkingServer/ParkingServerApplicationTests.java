@@ -1,4 +1,4 @@
-package ua.lviv.iot.ParkingServer;
+package ua.lviv.iot.parkingServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

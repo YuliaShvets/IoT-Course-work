@@ -1,4 +1,4 @@
-package ua.lviv.iot.ParkingServer.model;
+package ua.lviv.iot.parkingServer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

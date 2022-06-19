@@ -1,10 +1,10 @@
-package ua.lviv.iot.ParkingServer.datastorage;
+package ua.lviv.iot.parkingServer.datastorage;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ua.lviv.iot.ParkingServer.model.Parking;
+import ua.lviv.iot.parkingServer.model.Parking;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

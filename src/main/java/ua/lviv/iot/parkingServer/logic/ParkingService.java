@@ -1,11 +1,11 @@
-package ua.lviv.iot.ParkingServer.logic;
+package ua.lviv.iot.parkingServer.logic;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lviv.iot.ParkingServer.datastorage.ParkingFileStore;
-import ua.lviv.iot.ParkingServer.model.Parking;
+import ua.lviv.iot.parkingServer.datastorage.ParkingFileStore;
+import ua.lviv.iot.parkingServer.model.Parking;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -64,7 +64,7 @@ public class ParkingService {
         if (parkingFileStore.pushParking() != null) {
             List<Parking> list = parkingFileStore.pushParking();
             for (Parking parking1 : list) {
-                this.parking.put(parking1.getParkingId(), parking1);
+                parking.put(parking1.getParkingId(), parking1);
             }
         }
     }

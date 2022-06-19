@@ -1,11 +1,11 @@
-package ua.lviv.iot.ParkingServer.logic;
+package ua.lviv.iot.parkingServer.logic;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.lviv.iot.ParkingServer.datastorage.ParkingSpotFileStore;
-import ua.lviv.iot.ParkingServer.model.ParkingSpot;
+import ua.lviv.iot.parkingServer.datastorage.ParkingSpotFileStore;
+import ua.lviv.iot.parkingServer.model.ParkingSpot;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

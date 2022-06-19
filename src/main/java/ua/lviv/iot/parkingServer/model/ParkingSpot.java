@@ -1,11 +1,11 @@
-package ua.lviv.iot.ParkingServer.model;
+package ua.lviv.iot.parkingServer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import ua.lviv.iot.ParkingServer.model.enums.ParkingSpotSize;
+import ua.lviv.iot.parkingServer.model.enums.ParkingSpotSize;
 
 @AllArgsConstructor
 @NoArgsConstructor

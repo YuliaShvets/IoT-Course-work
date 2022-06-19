@@ -1,4 +1,4 @@
-package ua.lviv.iot.ParkingServer;
+package ua.lviv.iot.parkingServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

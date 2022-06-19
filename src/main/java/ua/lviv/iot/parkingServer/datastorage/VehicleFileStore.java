@@ -1,9 +1,9 @@
-package ua.lviv.iot.ParkingServer.datastorage;
+package ua.lviv.iot.parkingServer.datastorage;
 
 import org.springframework.stereotype.Component;
-import ua.lviv.iot.ParkingServer.Date;
-import ua.lviv.iot.ParkingServer.model.Vehicle;
-import ua.lviv.iot.ParkingServer.model.enums.VehicleType;
+import ua.lviv.iot.parkingServer.Date;
+import ua.lviv.iot.parkingServer.model.Vehicle;
+import ua.lviv.iot.parkingServer.model.enums.VehicleType;
 
 import java.io.File;
 import java.io.FileOutputStream;

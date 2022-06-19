@@ -1,8 +1,8 @@
-package ua.lviv.iot.ParkingServer.datastorage;
+package ua.lviv.iot.parkingServer.datastorage;
 
 import org.springframework.stereotype.Component;
-import ua.lviv.iot.ParkingServer.Date;
-import ua.lviv.iot.ParkingServer.model.Parking;
+import ua.lviv.iot.parkingServer.Date;
+import ua.lviv.iot.parkingServer.model.Parking;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -88,7 +88,7 @@ public class ParkingFileStore {
         String date = Date.getTimeNow();
 
         File file = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + date + ".csv");
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")) {
             writer.write(parkings.get(0).getHeaders() + "\n");
             for (Parking parking : parkings) {
                 writer.write(parking.toCSV() + "\n");
