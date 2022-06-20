@@ -6,9 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ua.lviv.iot.parkingServer.model.Parking;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,14 +33,10 @@ class ParkingFileStoreTest {
 
     @Test
     void saveParkingData() throws IOException {
-        try (FileReader expectedReader = new FileReader("src/test/resources/parking-test.csv");
-             BufferedReader expectedBR = new BufferedReader(expectedReader);
-             FileReader actualReader = new FileReader("src/main/resources/parking-2022-06-16.csv");
-             BufferedReader actualBR = new BufferedReader(actualReader)) {
-            String line1 = expectedBR.readLine();
-            String line2 = actualBR.readLine();
-            Assertions.assertEquals(line1, line2);
-
-        }
+        Path expected = Paths.get("src/test/resources/parking-test.csv");
+        Path actual = Paths.get("src/main/resources/parking-2022-06-16.csv");
+        byte[] file1 = Files.readAllBytes(expected);
+        byte[] file2 = Files.readAllBytes(actual);
+        Assertions.assertArrayEquals(file1, file2);
     }
 }

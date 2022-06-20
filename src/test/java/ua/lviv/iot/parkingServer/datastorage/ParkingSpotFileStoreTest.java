@@ -7,9 +7,10 @@ import org.junit.jupiter.api.Test;
 import ua.lviv.iot.parkingServer.model.ParkingSpot;
 import ua.lviv.iot.parkingServer.model.enums.ParkingSpotSize;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ class ParkingSpotFileStoreTest {
     void setUp() throws IOException {
         ParkingSpotFileStore parkingSpotFileStore = new ParkingSpotFileStore();
         List<ParkingSpot> parkingSpotList = new ArrayList<>();
-        ParkingSpot parkingSpot = new ParkingSpot(1L, true, ParkingSpotSize.MOTORBIKE );
+        ParkingSpot parkingSpot = new ParkingSpot(1L, true, ParkingSpotSize.MOTORBIKE);
         parkingSpotList.add(parkingSpot);
         parkingSpotFileStore.saveParkingSpotData(parkingSpotList);
     }
@@ -29,15 +30,11 @@ class ParkingSpotFileStoreTest {
     }
 
     @Test
-    void saveParkingSpotData() throws IOException{
-        try (FileReader expectedReader = new FileReader("src/test/resources/parkingSpot-test.csv");
-             BufferedReader expectedBR = new BufferedReader(expectedReader);
-             FileReader actualReader = new FileReader("src/main/resources/parkingSpot-2022-06-16.csv");
-             BufferedReader actualBR = new BufferedReader(actualReader)) {
-            String line1 = expectedBR.readLine();
-            String line2 = actualBR.readLine();
-            Assertions.assertEquals(line1, line2);
-
-        }
+    void saveParkingSpotData() throws IOException {
+        Path expected = Paths.get("src/test/resources/parkingSpot-test.csv");
+        Path actual = Paths.get("src/main/resources/parkingSpot-2022-06-16.csv");
+        byte[] file1 = Files.readAllBytes(expected);
+        byte[] file2 = Files.readAllBytes(actual);
+        Assertions.assertArrayEquals(file1, file2);
     }
 }
