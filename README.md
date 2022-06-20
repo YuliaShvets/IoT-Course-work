@@ -21,8 +21,8 @@ When reading data, you should search for all files for the entity that were crea
 14. The code should contain unit tests to check the logic of writing and searching for files on the file system.
 15. Create a set (collection) of REST queries that test the performance of developed services.
 
-#Instruction for running the application:
-1.Download the project from GitHub by cloning it, or just downloading as .zip file.
+# Instruction for running the application:
+1. Download the project from GitHub by cloning it, or just downloading as .zip file.
 2. Open Command Line and proceed to the project's path (ex: D:\\My Projects\\CourseWork - for Windows and cd Downloads/CourseWork for Mac OS).
 3. Run "mvn spring-boot:run" command and wait till the application is fully loaded and started.
 4. To shutdown the application, open the Command Line that runs the application, press "Ctrl + C", enter "Y" and press "Enter". 
