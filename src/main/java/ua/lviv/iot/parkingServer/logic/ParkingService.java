@@ -64,6 +64,10 @@ public class ParkingService {
         if (parkingFileStore.pushParking() != null) {
             List<Parking> list = parkingFileStore.pushParking();
             for (Parking parking1 : list) {
+                index += 1;
+                if (parking1.getParkingId() > index) {
+                    index = parking1.getParkingId();
+                }
                 parking.put(parking1.getParkingId(), parking1);
             }
         }

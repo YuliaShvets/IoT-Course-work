@@ -26,7 +26,6 @@ public class ParkingSpotService {
     private ParkingSpotFileStore parkingSpotFileStore;
 
 
-
     public List<ParkingSpot> findAllParkingSpots() {
         return new ArrayList<>(parkingSpots.values());
     }
@@ -64,6 +63,10 @@ public class ParkingSpotService {
         if (parkingSpotFileStore.pushParkingSpot() != null) {
             List<ParkingSpot> list = parkingSpotFileStore.pushParkingSpot();
             for (ParkingSpot parkingSpot : list) {
+                index += 1;
+                if (parkingSpot.getParkingSpotId() > index) {
+                    index = parkingSpot.getParkingSpotId();
+                }
                 parkingSpots.put(parkingSpot.getParkingSpotId(), parkingSpot);
             }
         }

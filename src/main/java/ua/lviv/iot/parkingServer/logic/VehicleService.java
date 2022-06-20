@@ -63,6 +63,10 @@ public class VehicleService {
         if (vehicleFileStore.pushVehicle() != null) {
             List<Vehicle> list = vehicleFileStore.pushVehicle();
             for (Vehicle vehicle : list) {
+                index += 1;
+                if (vehicle.getVehicleId() > index) {
+                    index = vehicle.getVehicleId();
+                }
                 vehicles.put(vehicle.getVehicleId(), vehicle);
             }
         }
