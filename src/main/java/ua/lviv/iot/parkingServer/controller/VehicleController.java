@@ -19,14 +19,14 @@ import java.util.List;
 public class VehicleController {
 
     @Autowired
-    VehicleService vehicleService;
+    private VehicleService vehicleService;
 
-    @PostMapping("/addVehicle")
+    @PostMapping
     public Vehicle addVehicle(@RequestBody Vehicle vehicle) {
         return vehicleService.addVehicle(vehicle);
     }
 
-    @GetMapping("/allVehicles")
+    @GetMapping
     public List<Vehicle> getAllVehicles() {
         return vehicleService.findAllVehicles();
     }
@@ -37,13 +37,13 @@ public class VehicleController {
     }
 
 
-    @PutMapping("/updateVehicle/{vehicleId}")
+    @PutMapping("/{vehicleId}")
     public Vehicle updateVehicle(@PathVariable Long vehicleId, @RequestBody Vehicle vehicle) {
         return vehicleService.updateVehicle(vehicleId, vehicle);
     }
 
 
-    @DeleteMapping("/deleteVehicle/{vehicleId}")
+    @DeleteMapping("/{vehicleId}")
     public Vehicle deleteVehicle(@PathVariable Long vehicleId) {
         return vehicleService.deleteVehicle(vehicleId);
     }

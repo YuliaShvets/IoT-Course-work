@@ -1,7 +1,7 @@
 package ua.lviv.iot.parkingServer.datastorage;
 
 import org.springframework.stereotype.Component;
-import ua.lviv.iot.parkingServer.Date;
+import ua.lviv.iot.parkingServer.utils.DateToday;
 import ua.lviv.iot.parkingServer.model.Vehicle;
 import ua.lviv.iot.parkingServer.model.enums.VehicleType;
 
@@ -35,13 +35,13 @@ public class VehicleFileStore {
 
         for (int i = 1; i <= LocalDate.now().getDayOfMonth(); i++) {
             if (i < 10) {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-" + year + "-" + month + "-0" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-" + year + "-" + month + "-0" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/vehicle-" + year + "-" + month + "-0" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/vehicle-" + year + "-" + month + "-0" + i + ".csv");
                     output.addAll(checkVehicle(CSV));
                 }
             } else {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-" + year + "-" + month + "-" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-" + year + "-" + month + "-" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/vehicle-" + year + "-" + month + "-" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/vehicle-" + year + "-" + month + "-" + i + ".csv");
                     output.addAll(checkVehicle(CSV));
                 }
             }
@@ -86,9 +86,9 @@ public class VehicleFileStore {
 
 
     public void saveVehicleData(List<Vehicle> vehicles) throws IOException {
-        String date = Date.getTimeNow();
+        String date = DateToday.getDateToday();
 
-        File file = new File("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-" + date + ".csv");
+        File file = new File("src/main/resources/vehicle-" + date + ".csv");
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");) {
             writer.write(vehicles.get(0).getHeaders() + "\n");
             for (Vehicle vehicle : vehicles) {

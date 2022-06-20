@@ -1,14 +1,10 @@
 package ua.lviv.iot.parkingServer.datastorage;
 
 import org.springframework.stereotype.Component;
-import ua.lviv.iot.parkingServer.Date;
 import ua.lviv.iot.parkingServer.model.Parking;
+import ua.lviv.iot.parkingServer.utils.DateToday;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -34,13 +30,13 @@ public class ParkingFileStore {
 
         for (int i = 1; i <= LocalDate.now().getDayOfMonth(); i++) {
             if (i < 10) {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + year + "-" + month + "-0" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + year + "-" + month + "-0" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/parking-" + year + "-" + month + "-0" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/parking-" + year + "-" + month + "-0" + i + ".csv");
                     output.addAll(checkParking(CSV));
                 }
             } else {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + year + "-" + month + "-" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + year + "-" + month + "-" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/parking-" + year + "-" + month + "-" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/parking-" + year + "-" + month + "-" + i + ".csv");
                     output.addAll(checkParking(CSV));
                 }
             }
@@ -85,9 +81,9 @@ public class ParkingFileStore {
 
 
     public void saveParkingData(List<Parking> parkings) throws IOException {
-        String date = Date.getTimeNow();
+        String date = DateToday.getDateToday();
 
-        File file = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parking-" + date + ".csv");
+        File file = new File("src/main/resources/parking-" + date + ".csv");
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")) {
             writer.write(parkings.get(0).getHeaders() + "\n");
             for (Parking parking : parkings) {

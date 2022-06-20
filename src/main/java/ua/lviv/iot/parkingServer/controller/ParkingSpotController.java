@@ -20,13 +20,13 @@ public class ParkingSpotController {
     @Autowired
     private ParkingSpotService parkingSpotService;
 
-    @PostMapping("/addParkingSpot")
+    @PostMapping
     public ParkingSpot addParkingSpot(@RequestBody ParkingSpot parkingSpot) {
         return parkingSpotService.addParkingSpot(parkingSpot);
     }
 
 
-    @GetMapping("/allParkingSpots")
+    @GetMapping
     public List<ParkingSpot> getAllParkingSpot() {
         return parkingSpotService.findAllParkingSpots();
     }
@@ -37,12 +37,12 @@ public class ParkingSpotController {
     }
 
 
-    @PutMapping("/updateParkingSpot/{parkingSpotId}")
+    @PutMapping("/{parkingSpotId}")
     public ParkingSpot updateParkingSpot(@PathVariable Long parkingSpotId, @RequestBody ParkingSpot parkingSpot) {
         return parkingSpotService.updateParkingSpot(parkingSpotId, parkingSpot);
     }
 
-    @DeleteMapping("/deleteParkingSpot/{parkingSpotId}")
+    @DeleteMapping("/{parkingSpotId}")
     public ParkingSpot deleteParkingSpot(@PathVariable Long parkingSpotId) {
         return parkingSpotService.deleteParkingSpot(parkingSpotId);
     }

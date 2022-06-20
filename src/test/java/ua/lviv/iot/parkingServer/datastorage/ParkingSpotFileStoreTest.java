@@ -32,7 +32,7 @@ class ParkingSpotFileStoreTest {
     void saveParkingSpotData() throws IOException{
         try (FileReader expectedReader = new FileReader("src/test/resources/parkingSpot-test.csv");
              BufferedReader expectedBR = new BufferedReader(expectedReader);
-             FileReader actualReader = new FileReader("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-2022-06-16.csv");
+             FileReader actualReader = new FileReader("src/main/resources/parkingSpot-2022-06-16.csv");
              BufferedReader actualBR = new BufferedReader(actualReader)) {
             String line1 = expectedBR.readLine();
             String line2 = actualBR.readLine();

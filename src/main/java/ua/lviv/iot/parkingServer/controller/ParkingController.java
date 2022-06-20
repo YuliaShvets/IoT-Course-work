@@ -22,12 +22,12 @@ public class ParkingController {
     private ParkingService parkingService;
 
 
-    @PostMapping("/addParking")
+    @PostMapping
     public Parking addParking(@RequestBody Parking place) {
         return parkingService.addParking(place);
     }
 
-    @GetMapping("/allParking")
+    @GetMapping
     public List<Parking> getAllParking() {
         return parkingService.findAllParking();
     }
@@ -38,12 +38,12 @@ public class ParkingController {
     }
 
 
-    @PutMapping("/updateParking/{parkingId}")
+    @PutMapping("/{parkingId}")
     public Parking updateParking(@PathVariable Long parkingId, @RequestBody Parking place) {
         return parkingService.updateParking(parkingId, place);
     }
 
-    @DeleteMapping("/deleteParking/{parkingId}")
+    @DeleteMapping("/{parkingId}")
     public Parking deleteParking(@PathVariable Long parkingId) {
         return parkingService.deleteParking(parkingId);
     }

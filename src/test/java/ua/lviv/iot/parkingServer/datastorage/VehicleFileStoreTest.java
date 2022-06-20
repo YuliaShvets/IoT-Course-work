@@ -34,7 +34,7 @@ class VehicleFileStoreTest {
     void saveVehicleData() throws IOException{
         try (FileReader expectedReader = new FileReader("src/test/resources/vehicle-test.csv");
              BufferedReader expectedBR = new BufferedReader(expectedReader);
-             FileReader actualReader = new FileReader("src/main/java/ua/lviv/iot/ParkingServer/files/vehicle-2022-06-16.csv");
+             FileReader actualReader = new FileReader("src/main/resources/vehicle-2022-06-16.csv");
              BufferedReader actualBR = new BufferedReader(actualReader)) {
             String line1 = expectedBR.readLine();
             String line2 = actualBR.readLine();

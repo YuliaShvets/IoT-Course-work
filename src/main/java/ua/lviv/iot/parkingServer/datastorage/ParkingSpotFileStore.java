@@ -1,7 +1,7 @@
 package ua.lviv.iot.parkingServer.datastorage;
 
 import org.springframework.stereotype.Component;
-import ua.lviv.iot.parkingServer.Date;
+import ua.lviv.iot.parkingServer.utils.DateToday;
 import ua.lviv.iot.parkingServer.model.ParkingSpot;
 import ua.lviv.iot.parkingServer.model.enums.ParkingSpotSize;
 
@@ -36,13 +36,13 @@ public class ParkingSpotFileStore {
 
         for (int i = 1; i <= LocalDate.now().getDayOfMonth(); i++) {
             if (i < 10) {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + year + "-" + month + "-0" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + year + "-" + month + "-0" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/parkingSpot-" + year + "-" + month + "-0" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/parkingSpot-" + year + "-" + month + "-0" + i + ".csv");
                     output.addAll(checkParkingSpot(CSV));
                 }
             } else {
-                if (Files.exists(Paths.get("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + year + "-" + month + "-" + i + ".csv"))) {
-                    CSV = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + year + "-" + month + "-" + i + ".csv");
+                if (Files.exists(Paths.get("src/main/resources/parkingSpot-" + year + "-" + month + "-" + i + ".csv"))) {
+                    CSV = new File("src/main/resources/parkingSpot-" + year + "-" + month + "-" + i + ".csv");
                     output.addAll(checkParkingSpot(CSV));
                 }
             }
@@ -84,9 +84,9 @@ public class ParkingSpotFileStore {
 
 
     public void saveParkingSpotData(List<ParkingSpot> parkingSpots) throws IOException {
-        String date = Date.getTimeNow();
+        String date = DateToday.getDateToday();
 
-        File file = new File("src/main/java/ua/lviv/iot/ParkingServer/files/parkingSpot-" + date + ".csv");
+        File file = new File("src/main/resources/parkingSpot-" + date + ".csv");
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");) {
             writer.write(parkingSpots.get(0).getHeaders() + "\n");
             for (ParkingSpot parkingSpot : parkingSpots) {
