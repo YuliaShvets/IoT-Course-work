@@ -4,7 +4,11 @@ import org.springframework.stereotype.Component;
 import ua.lviv.iot.parkingServer.model.Parking;
 import ua.lviv.iot.parkingServer.utils.DateToday;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -84,7 +88,7 @@ public class ParkingFileStore {
         String date = DateToday.getDateToday();
 
         File file = new File("src/main/resources/parking-" + date + ".csv");
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8")) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {
             writer.write(parkings.get(0).getHeaders() + "\n");
             for (Parking parking : parkings) {
                 writer.write(parking.toCSV() + "\n");
@@ -96,6 +100,3 @@ public class ParkingFileStore {
     }
 
 }
-
-
-
