@@ -58,19 +58,14 @@ public class ParkingFileStore {
                 Parking parking = new Parking();
                 int index = 0;
                 for (String value : values) {
-                    switch (index) {
-                        case 0:
-                            parking.setParkingId(Long.parseLong(value));
-                            break;
-                        case 1:
-                            parking.setLocation(value);
-                            break;
-                        case 2:
-                            parking.setTradeNetwork(value);
-                            break;
-                        case 3:
-                            parking.setCountOfParkingSpot(Integer.parseInt(value));
-                            break;
+                    if (index == 0) {
+                        parking.setParkingId(Long.parseLong(value));
+                    } else if (index == 1) {
+                        parking.setLocation(value);
+                    } else if (index == 2) {
+                        parking.setTradeNetwork(value);
+                    } else if (index == 3) {
+                        parking.setCountOfParkingSpot(Integer.parseInt(value));
                     }
                     index++;
                 }

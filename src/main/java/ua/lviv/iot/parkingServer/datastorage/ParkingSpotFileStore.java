@@ -60,16 +60,12 @@ public class ParkingSpotFileStore {
                 ParkingSpot parkingSpot = new ParkingSpot();
                 int index = 0;
                 for (String value : values) {
-                    switch (index) {
-                        case 0:
-                            parkingSpot.setParkingSpotId(Long.parseLong(value));
-                            break;
-                        case 1:
-                            parkingSpot.setAvailable(Boolean.parseBoolean(value));
-                            break;
-                        case 2:
-                            parkingSpot.setSize(ParkingSpotSize.valueOf(value));
-                            break;
+                    if (index == 0) {
+                        parkingSpot.setParkingSpotId(Long.parseLong(value));
+                    } else if (index == 1) {
+                        parkingSpot.setAvailable(Boolean.parseBoolean(value));
+                    } else if (index == 2) {
+                        parkingSpot.setSize(ParkingSpotSize.valueOf(value));
                     }
                     index++;
                 }

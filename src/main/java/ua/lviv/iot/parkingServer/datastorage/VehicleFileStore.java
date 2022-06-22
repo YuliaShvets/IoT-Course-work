@@ -59,19 +59,14 @@ public class VehicleFileStore {
                 Vehicle vehicle = new Vehicle();
                 int index = 0;
                 for (String value : values) {
-                    switch (index) {
-                        case 0:
-                            vehicle.setVehicleId(Long.parseLong(value));
-                            break;
-                        case 1:
-                            vehicle.setNumber(value);
-                            break;
-                        case 2:
-                            vehicle.setTypeOfVehicle(VehicleType.valueOf(value));
-                            break;
-                        case 3:
-                            vehicle.setDurationOfUseOfParkingSpot(Double.parseDouble(value));
-                            break;
+                    if (index == 0) {
+                        vehicle.setVehicleId(Long.parseLong(value));
+                    } else if (index == 1) {
+                        vehicle.setNumber(value);
+                    } else if (index == 2) {
+                        vehicle.setTypeOfVehicle(VehicleType.valueOf(value));
+                    } else if (index == 3) {
+                        vehicle.setDurationOfUseOfParkingSpot(Double.parseDouble(value));
                     }
                     index++;
                 }
