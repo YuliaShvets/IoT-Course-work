@@ -27,13 +27,12 @@ class ParkingFileStoreTest {
     }
 
     @Test
-    void saveParkingData() throws IOException {
+    void saveRecords() throws IOException {
         File generatedData = new File(("src/test/resources/parking-test.csv"));
         File expectedData = new File("src/main/resources/parking-2022-06-16.csv");
         try (
                 BufferedReader expectedReader = new BufferedReader(new FileReader(generatedData));
                 BufferedReader actualReader = new BufferedReader(new FileReader(expectedData))) {
-
 
             List<String> expected = new ArrayList<>();
             List<String> result = new ArrayList<>();
