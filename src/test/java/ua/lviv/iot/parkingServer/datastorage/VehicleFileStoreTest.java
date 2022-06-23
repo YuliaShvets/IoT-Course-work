@@ -11,9 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +24,7 @@ class VehicleFileStoreTest {
         Vehicle vehicle2 = new Vehicle(1L, "AK7856MH", VehicleType.MOTORCYCLE, 4.0, false);
         vehicle.add(vehicle1);
         vehicle.add(vehicle2);
-        vehicleFileStore.saveVehicleData(vehicle);
+        vehicleFileStore.saveRecords(vehicle);
     }
 
     @AfterEach

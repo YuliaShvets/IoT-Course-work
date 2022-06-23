@@ -55,13 +55,13 @@ public class ParkingSpotService {
     @PreDestroy
     private void saveParkingSpotData() throws IOException {
         List<ParkingSpot> list = parkingSpots.values().stream().toList();
-        parkingSpotFileStore.saveParkingSpotData(list);
+        parkingSpotFileStore.saveRecords(list);
     }
 
     @PostConstruct
     private void pushParkingSpot() throws IOException {
-        if (parkingSpotFileStore.pushParkingSpot() != null) {
-            List<ParkingSpot> list = parkingSpotFileStore.pushParkingSpot();
+        if (parkingSpotFileStore.readRecords() != null) {
+            List<ParkingSpot> list = parkingSpotFileStore.readRecords();
             for (ParkingSpot parkingSpot : list) {
                 index += 1;
                 if (parkingSpot.getParkingSpotId() > index) {

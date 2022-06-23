@@ -56,13 +56,13 @@ public class ParkingService {
     @PreDestroy
     private void saveParkingData() throws IOException {
         List<Parking> list = parking.values().stream().toList();
-        parkingFileStore.saveParkingData(list);
+        parkingFileStore.saveRecords(list);
     }
 
     @PostConstruct
     private void pushParking() throws IOException {
-        if (parkingFileStore.pushParking() != null) {
-            List<Parking> list = parkingFileStore.pushParking();
+        if (parkingFileStore.readRecords() != null) {
+            List<Parking> list = parkingFileStore.readRecords();
             for (Parking parking1 : list) {
                 index += 1;
                 if (parking1.getParkingId() > index) {

@@ -12,15 +12,17 @@ import ua.lviv.iot.parkingServer.model.enums.ParkingSpotSize;
 @Getter
 @Setter
 @ToString
-public class ParkingSpot {
+public class ParkingSpot extends Record {
     private Long parkingSpotId;
     private boolean isAvailable;
     private ParkingSpotSize size;
 
+    @Override
     public String getHeaders() {
         return "Parking spot id, Is available, Size";
     }
 
+    @Override
     public String toCSV() {
         return this.getParkingSpotId() + ", " + this.isAvailable() + ", " + this.getSize();
     }

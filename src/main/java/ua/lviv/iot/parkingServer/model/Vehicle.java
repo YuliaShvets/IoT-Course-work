@@ -12,17 +12,19 @@ import ua.lviv.iot.parkingServer.model.enums.VehicleType;
 @Setter
 @Getter
 @ToString
-public class Vehicle {
+public class Vehicle extends Record{
     private Long vehicleId;
     private String number;
     private VehicleType typeOfVehicle;
     private double durationOfUseOfParkingSpot; // in hours
     private boolean isTicketReceived;
 
+    @Override
     public String getHeaders() {
         return "Vehicle id, Number, Vehicle Type, Duration of use parking spot, Is ticket received";
     }
 
+    @Override
     public String toCSV() {
         return this.getVehicleId() + ", " + this.getNumber() + ", " + this.getTypeOfVehicle() + ", " + this.getDurationOfUseOfParkingSpot() + ", " + this.isTicketReceived();
     }

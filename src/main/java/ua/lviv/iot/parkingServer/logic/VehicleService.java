@@ -55,13 +55,13 @@ public class VehicleService {
     @PreDestroy
     private void saveVehicleData() throws IOException {
         List<Vehicle> list = vehicles.values().stream().toList();
-        vehicleFileStore.saveVehicleData(list);
+        vehicleFileStore.saveRecords(list);
     }
 
     @PostConstruct
     private void pushVehicle() throws IOException {
-        if (vehicleFileStore.pushVehicle() != null) {
-            List<Vehicle> list = vehicleFileStore.pushVehicle();
+        if (vehicleFileStore.readRecords() != null) {
+            List<Vehicle> list = vehicleFileStore.readRecords();
             for (Vehicle vehicle : list) {
                 index += 1;
                 if (vehicle.getVehicleId() > index) {

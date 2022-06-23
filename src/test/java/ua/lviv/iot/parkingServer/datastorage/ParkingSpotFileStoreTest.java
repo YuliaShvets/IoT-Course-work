@@ -11,9 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,7 @@ class ParkingSpotFileStoreTest {
         List<ParkingSpot> parkingSpotList = new ArrayList<>();
         ParkingSpot parkingSpot = new ParkingSpot(1L, true, ParkingSpotSize.MOTORBIKE);
         parkingSpotList.add(parkingSpot);
-        parkingSpotFileStore.saveParkingSpotData(parkingSpotList);
+        parkingSpotFileStore.saveRecords(parkingSpotList);
     }
 
     @AfterEach
