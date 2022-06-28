@@ -59,7 +59,7 @@ public class ParkingSpotService {
     }
 
     @PostConstruct
-    private void pushParkingSpot() throws IOException {
+    private void parkingSpotDataToHashMap() throws IOException {
         if (parkingSpotFileStore.readRecords() != null) {
             List<ParkingSpot> list = parkingSpotFileStore.readRecords();
             for (ParkingSpot parkingSpot : list) {

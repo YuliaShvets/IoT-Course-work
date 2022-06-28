@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import ua.lviv.iot.parkingServer.model.Parking;
 
 @Component
-
 public class ParkingFileStore extends AbstractFIleStore<Parking> {
 
 

@@ -10,4 +10,5 @@ public class DateToday {
     public static String getDateToday() {
         return DATE_FORMAT.format(Calendar.getInstance().getTime());
     }
+
 }

@@ -59,7 +59,7 @@ public class VehicleService {
     }
 
     @PostConstruct
-    private void pushVehicle() throws IOException {
+    private void vehicleDataToHashMap() throws IOException {
         if (vehicleFileStore.readRecords() != null) {
             List<Vehicle> list = vehicleFileStore.readRecords();
             for (Vehicle vehicle : list) {
